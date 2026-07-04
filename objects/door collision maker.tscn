@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d18uwem6sm3yd"]
+
+[ext_resource type="Script" uid="uid://d0fjs87lgbkqo" path="res://scripts/collision.gd" id="1_x45uj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x45uj"]
+size = Vector3(20.635, 18.885, 0)
+
+[node name="collision" type="Node3D" unique_id=1511621617]
+script = ExtResource("1_x45uj")
+size = Vector2(20.635, 18.885)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1347862097]
+collision_layer = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1160371489]
+shape = SubResource("BoxShape3D_x45uj")

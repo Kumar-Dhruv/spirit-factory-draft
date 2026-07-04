@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dqn54ffsxai0x"]
+
+[ext_resource type="Script" uid="uid://ca4nrsd1os5aj" path="res://scripts/crafting_bench.gd" id="1_vmheu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_plddu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmheu"]
+albedo_color = Color(0.9921875, 0, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8qaw1"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="crafting component" type="StaticBody3D" unique_id=1586888675 groups=["crafting"]]
+collision_layer = 8
+script = ExtResource("1_vmheu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=811961197]
+mesh = SubResource("BoxMesh_plddu")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmheu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=824569773]
+shape = SubResource("ConcavePolygonShape3D_8qaw1")

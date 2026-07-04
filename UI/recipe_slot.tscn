@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6t3jl7il6bo4"]
+
+[ext_resource type="Script" uid="uid://ccpost8chijfk" path="res://scripts/recipe_slot.gd" id="1_e0hwg"]
+[ext_resource type="LabelSettings" uid="uid://3narnmpe46nm" path="res://resources/invlabel.tres" id="1_iayuq"]
+
+[node name="recipe slot" type="Control" unique_id=1136611123]
+custom_minimum_size = Vector2(500, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 60.0
+script = ExtResource("1_e0hwg")
+
+[node name="Label" type="Label" parent="." unique_id=2062772089]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "dddd"
+label_settings = ExtResource("1_iayuq")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

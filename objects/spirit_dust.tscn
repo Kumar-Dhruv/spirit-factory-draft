@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cir17q6nags3w"]
+
+[ext_resource type="PackedScene" uid="uid://tw25jrp3oe5v" path="res://objects/pickup.tscn" id="1_tnp6e"]
+[ext_resource type="Resource" uid="uid://biwok00u706e" path="res://resources/items/red spirit dust.tres" id="2_lfpwt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e1ucc"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1ucc"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="spirit dust" type="Node3D" unique_id=435281367]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=651670655]
+mesh = SubResource("SphereMesh_e1ucc")
+surface_material_override/0 = SubResource("StandardMaterial3D_e1ucc")
+
+[node name="pickup" parent="." unique_id=2033932993 instance=ExtResource("1_tnp6e")]
+data = ExtResource("2_lfpwt")

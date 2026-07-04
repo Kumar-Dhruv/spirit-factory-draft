@@ -1,0 +1,449 @@
+[gd_scene format=3 uid="uid://b73ilfvtggq4u"]
+
+[ext_resource type="Script" uid="uid://xsw5duljwiwn" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://uloflftdp8ts" path="res://icon.svg" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://c146bx06mb5cd" path="res://scripts/inventory.gd" id="3_1yqc4"]
+[ext_resource type="Script" uid="uid://b1de6w3lgimpd" path="res://scripts/interaction.gd" id="4_esgq3"]
+[ext_resource type="PackedScene" uid="uid://l5ryjv63h1ls" path="res://UI/inventory_slot.tscn" id="4_kjkj0"]
+[ext_resource type="Script" uid="uid://btws5tdp2wfig" path="res://scripts/crafting_ui.gd" id="6_tue77"]
+[ext_resource type="PackedScene" uid="uid://c6t3jl7il6bo4" path="res://UI/recipe_slot.tscn" id="7_33vod"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3pqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+bg_color = Color(0.26953125, 0.26953125, 0.26953125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onrkg"]
+bg_color = Color(0.21875, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_i3pqv"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_i3pqv")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_onrkg")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtel"]
+bg_color = Color(1, 0.8671875, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqtel"]
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_onrkg"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7ghd"]
+font_size = 30
+font_color = Color(0.9453125, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nvl01"]
+font_size = 60
+
+[node name="player" type="CharacterBody3D" unique_id=37597251 groups=["player"]]
+collision_mask = 14
+script = ExtResource("1_4flbx")
+
+[node name="Camera3D" type="Marker3D" parent="." unique_id=1822429833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72216415, -0.15963086)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1335651670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72216415, 0)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 2
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="interactioncast" type="RayCast3D" parent="Camera3D" unique_id=1812314029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72216415, 0)
+target_position = Vector3(0, 0, -2)
+collision_mask = 8
+debug_shape_custom_color = Color(0.1015625, 1, 0, 1)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Camera3D" unique_id=1227796112]
+remote_path = NodePath("../../game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D")
+
+[node name="game window" type="Control" parent="." unique_id=1919366308]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="game window" unique_id=1940362903]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="game window/AspectRatioContainer" unique_id=1457703410]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="game window/AspectRatioContainer/SubViewportContainer" unique_id=1705308426]
+handle_input_locally = false
+size = Vector2i(842, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1629160473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72216415, -0.15963086)
+keep_aspect = 0
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2004410634]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2124992548]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="Control" type="Control" parent="." unique_id=949337571]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="stats" type="Control" parent="Control" unique_id=2022260798]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="h" type="Label" parent="Control/stats" unique_id=1691062179]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -86.0
+offset_right = 439.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "health
+"
+label_settings = SubResource("LabelSettings_i3pqv")
+horizontal_alignment = 1
+
+[node name="health" type="ProgressBar" parent="Control/stats" unique_id=692418322]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -54.0
+offset_right = 161.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_i3pqv")
+value = 100.0
+show_percentage = false
+
+[node name="m" type="Label" parent="Control/stats" unique_id=2025512467]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -168.0
+offset_right = 840.0
+offset_bottom = -108.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "resources
+"
+label_settings = SubResource("LabelSettings_i3pqv")
+
+[node name="mg" type="ProgressBar" parent="Control/stats" unique_id=12934749]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -133.0
+offset_right = 162.0
+offset_bottom = -106.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_i3pqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqtel")
+max_value = 120.0
+value = 120.0
+show_percentage = false
+
+[node name="mag" type="Label" parent="Control/stats" unique_id=2011570245]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 77.0
+offset_top = -163.0
+offset_right = 309.0
+offset_bottom = -103.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1x120"
+label_settings = SubResource("LabelSettings_hqtel")
+
+[node name="freq" type="Label" parent="Control/stats" unique_id=868947360]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_top = -63.0
+offset_right = 385.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "freq mod: 1"
+label_settings = SubResource("LabelSettings_onrkg")
+
+[node name="pow" type="Label" parent="Control/stats" unique_id=1433619268]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 185.0
+offset_top = -104.0
+offset_right = 417.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "power: "
+label_settings = SubResource("LabelSettings_onrkg")
+
+[node name="wave" type="Label" parent="Control" unique_id=1607787394]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -111.0
+offset_right = -18.0
+offset_bottom = -51.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "wave type: dmg"
+label_settings = SubResource("LabelSettings_onrkg")
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1099074026]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_onrkg")
+stretch_mode = 5
+
+[node name="knck" type="Label" parent="Control" unique_id=1197843977]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -513.0
+offset_top = -66.0
+offset_right = -281.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "knockback: true"
+label_settings = SubResource("LabelSettings_onrkg")
+
+[node name="z" type="Label" parent="Control" unique_id=489790540]
+visible = false
+layout_mode = 1
+offset_left = 22.0
+offset_top = 157.0
+offset_right = 885.0
+offset_bottom = 217.0
+text = "special key"
+label_settings = SubResource("LabelSettings_n7ghd")
+
+[node name="die" type="Label" parent="Control" unique_id=16801204]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -41.5
+offset_right = 141.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_nvl01")
+
+[node name="recoil reset" type="Label" parent="Control" unique_id=1322987726]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -13.0
+offset_right = -18.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1
+"
+
+[node name="regen timer" type="Timer" parent="." unique_id=1275056152]
+wait_time = 3.05
+one_shot = true
+
+[node name="regen" type="Timer" parent="." unique_id=899950689]
+one_shot = true
+
+[node name="recoil reset" type="Timer" parent="." unique_id=1402598301]
+wait_time = 0.3
+one_shot = true
+
+[node name="inventory" type="Node3D" parent="." unique_id=1467847462]
+script = ExtResource("3_1yqc4")
+inventory_id = "player"
+size = 6
+
+[node name="Inventory" type="Control" parent="inventory" unique_id=54569533]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="inventory/Inventory" unique_id=1513248732]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -388.0
+offset_top = -132.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+columns = 3
+
+[node name="inventory slot" parent="inventory/Inventory/GridContainer" unique_id=563146356 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="inventory slot2" parent="inventory/Inventory/GridContainer" unique_id=338301016 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="inventory slot3" parent="inventory/Inventory/GridContainer" unique_id=275428360 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="inventory slot4" parent="inventory/Inventory/GridContainer" unique_id=1055687846 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="interaction" type="Node3D" parent="." unique_id=1702244724]
+script = ExtResource("4_esgq3")
+
+[node name="storage inventory" type="Node3D" parent="." unique_id=320580590]
+script = ExtResource("3_1yqc4")
+size = 1
+
+[node name="Inventory" type="Control" parent="storage inventory" unique_id=1240547534]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="storage inventory/Inventory" unique_id=1191859467]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -388.0
+offset_bottom = 132.0
+grow_horizontal = 0
+mouse_filter = 2
+columns = 3
+
+[node name="inventory slot" parent="storage inventory/Inventory/GridContainer" unique_id=329327976 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="inventory slot2" parent="storage inventory/Inventory/GridContainer" unique_id=1944845173 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="inventory slot3" parent="storage inventory/Inventory/GridContainer" unique_id=407623287 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="inventory slot4" parent="storage inventory/Inventory/GridContainer" unique_id=1878796182 instance=ExtResource("4_kjkj0")]
+layout_mode = 2
+
+[node name="crafting ui" type="Control" parent="." unique_id=1964290962]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_tue77")
+recipe_slot = ExtResource("7_33vod")
+
+[node name="GridContainer" type="GridContainer" parent="crafting ui" unique_id=1755479387]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -252.0
+offset_bottom = 82.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[connection signal="timeout" from="regen timer" to="." method="_on_regen_timer_timeout"]
+[connection signal="timeout" from="regen" to="." method="_on_regen_timeout"]
+[connection signal="timeout" from="recoil reset" to="." method="_on_recoil_reset_timeout"]

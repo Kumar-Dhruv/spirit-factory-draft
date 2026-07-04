@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dn0kptpbkmfxg"]
+
+[ext_resource type="PackedScene" uid="uid://cx84u0raqlndh" path="res://objects/locked_door.tscn" id="1_avqyr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_avqyr"]
+size = Vector3(1, 1.16, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6esa1"]
+albedo_color = Color(0, 0.4609375, 1, 1)
+
+[node name="blue door" type="Node3D" unique_id=577357620]
+
+[node name="locked door" parent="." unique_id=1800107377 instance=ExtResource("1_avqyr")]
+door_id = "b"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1412533829]
+mesh = SubResource("BoxMesh_avqyr")
+surface_material_override/0 = SubResource("StandardMaterial3D_6esa1")

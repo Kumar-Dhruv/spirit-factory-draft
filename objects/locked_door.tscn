@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cx84u0raqlndh"]
+
+[ext_resource type="Script" uid="uid://cdje35rqh88un" path="res://scripts/locked_door.gd" id="1_ced0h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nckol"]
+size = Vector3(2, 2, 0)
+
+[node name="locked door" type="StaticBody3D" unique_id=529863653 groups=["doors"]]
+collision_layer = 12
+script = ExtResource("1_ced0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1276591753]
+shape = SubResource("BoxShape3D_nckol")

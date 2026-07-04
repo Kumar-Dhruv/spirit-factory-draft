@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://l5ryjv63h1ls"]
+
+[ext_resource type="LabelSettings" uid="uid://3narnmpe46nm" path="res://resources/invlabel.tres" id="1_hmrqk"]
+[ext_resource type="Script" uid="uid://dh8x7lix06o02" path="res://scripts/inventory_slot.gd" id="1_phof1"]
+
+[node name="inventory slot" type="Control" unique_id=563146356]
+custom_minimum_size = Vector2(75, 35)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_phof1")
+
+[node name="Label" type="Label" parent="." unique_id=232223013]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ddd"
+label_settings = ExtResource("1_hmrqk")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://dqbytv4fhseu8"]
+
+[ext_resource type="PackedScene" uid="uid://b73ilfvtggq4u" path="res://actors/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://1stjohinjpmp" path="res://actors/enemy.tscn" id="2_fj7yv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3sb7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_fj7yv"]
+sky_material = SubResource("ProceduralSkyMaterial_f3sb7")
+
+[sub_resource type="Environment" id="Environment_tlwt5"]
+background_mode = 2
+sky = SubResource("Sky_fj7yv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_f3sb7"]
+vertices = PackedVector3Array(-24.731617, 0.5, -2.9817505, -23.981617, 0.5, -2.9817505, -23.731617, 0.5, -7.9817505, -24.731617, 0.5, -24.73175, -22.731617, 0.5, -7.7317505, -22.731617, 0.5, -2.9817505, -0.23161697, 0.5, -2.9817505, -0.23161697, 0.5, -24.73175, 1.018383, 0.5, -24.73175, 1.018383, 0.5, -2.9817505, 16.768383, 0.5, -2.9817505, 16.768383, 0.5, -24.73175, 18.018383, 0.5, -24.73175, 18.018383, 0.5, -2.9817505, 24.518383, 0.5, -2.9817505, 24.518383, 0.5, -24.73175, 24.518383, 0.5, 24.51825, 24.518383, 0.5, 23.01825, 18.018383, 0.5, 23.01825, 17.768383, 0.5, 24.01825, 16.768383, 0.5, 23.76825, -23.731617, 0.5, 23.26825, -23.981617, 0.5, -1.7317505, -24.731617, 0.5, -1.7317505, -24.731617, 0.5, 24.51825, 16.768383, 0.5, 23.01825, -22.731617, 0.5, -1.7317505, -22.731617, 0.5, 21.76825, 16.768383, 0.5, 21.76825, 16.768383, 0.5, -1.7317505, 18.018383, 0.5, -1.7317505, 18.018383, 0.5, 21.76825, 24.518383, 0.5, 21.76825, 24.518383, 0.5, -1.7317505)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(4, 7, 6), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 16), PackedInt32Array(21, 20, 19), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(21, 19, 24), PackedInt32Array(24, 19, 16), PackedInt32Array(21, 25, 20), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gv5m4"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+shading_mode = 0
+albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gv5m4"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f3sb7"]
+size = Vector3(30, 1, 0)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fj7yv"]
+data = PackedVector3Array(-15, 0.5, 0, 15, 0.5, 0, -15, -0.5, 0, 15, 0.5, 0, 15, -0.5, 0, -15, -0.5, 0, 15, 0.5, 0, -15, 0.5, 0, 15, -0.5, 0, -15, 0.5, 0, -15, -0.5, 0, 15, -0.5, 0, 15, 0.5, 0, 15, 0.5, 0, 15, -0.5, 0, 15, 0.5, 0, 15, -0.5, 0, 15, -0.5, 0, -15, 0.5, 0, -15, 0.5, 0, -15, -0.5, 0, -15, 0.5, 0, -15, -0.5, 0, -15, -0.5, 0, 15, 0.5, 0, -15, 0.5, 0, 15, 0.5, 0, -15, 0.5, 0, -15, 0.5, 0, 15, 0.5, 0, -15, -0.5, 0, 15, -0.5, 0, -15, -0.5, 0, 15, -0.5, 0, 15, -0.5, 0, -15, -0.5, 0)
+
+[node name="World" type="Node3D" unique_id=855176744]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=504630904]
+environment = SubResource("Environment_tlwt5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=508639709]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player" parent="." unique_id=37597251 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(-0.0007155378, 0, 0.99999976, 0, 1, 0, -0.99999976, 0, -0.0007155378, 0, 0.985, 7)
+collision_mask = 4
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1771467413]
+navigation_mesh = SubResource("NavigationMesh_f3sb7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1651723401]
+collision_layer = 4
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1159571933]
+mesh = SubResource("PlaneMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=1822027871]
+shape = SubResource("ConcavePolygonShape3D_gv5m4")
+
+[node name="Node3D" type="Node3D" parent="NavigationRegion3D" unique_id=1303159655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7106667, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=908563712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.731617, 3.4594927, -2.2485123)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D2" unique_id=1137510904]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D2" unique_id=2000581786]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=1198341144]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.41890526, 3.4594927, -17.001366)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D3" unique_id=791697919]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D3" unique_id=846101873]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=1847339241]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17.433336, 3.4594927, -21.731749)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D4" unique_id=663440003]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D4" unique_id=1581593538]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=2144591974]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17.433336, 3.4594927, 8.390831)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D5" unique_id=1748828954]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D5" unique_id=1375699836]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=1800292881]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -23.471811, 3.4594927, 7.6417923)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D6" unique_id=322883336]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D6" unique_id=477550462]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=2017814883]
+transform = Transform3D(-0.99995494, 0.009497278, -9.0585265e-05, 0.0094977105, 0.9999094, -0.009546299, -8.682004e-08, -0.00954673, -0.99995446, -8.3468685, 3.4594927, 22.438715)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D7" unique_id=1886005236]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D7" unique_id=1735452814]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=1215177646]
+transform = Transform3D(-0.99995494, 0.009497278, -9.0585265e-05, 0.0094977105, 0.9999094, -0.009546299, -8.682004e-08, -0.00954673, -0.99995446, 21.104307, 3.4594927, 22.438715)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D8" unique_id=92116380]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D8" unique_id=532639246]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="NavigationRegion3D/Node3D" unique_id=1612938793]
+transform = Transform3D(-0.99995494, 0.009497278, -9.0585265e-05, 0.0094977105, 0.9999094, -0.009546299, -8.682004e-08, -0.00954673, -0.99995446, 14.250284, 3.4594927, -2.2663183)
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D/StaticBody3D9" unique_id=1049142861]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/StaticBody3D9" unique_id=885588034]
+shape = SubResource("ConcavePolygonShape3D_fj7yv")
+
+[node name="enemy" parent="." unique_id=1475309576 instance=ExtResource("2_fj7yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.046062, 1, 7.136)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=659456128]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 39.141808, 0)
+current = true

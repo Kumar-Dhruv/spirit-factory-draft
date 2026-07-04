@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://1stjohinjpmp"]
+
+[ext_resource type="Script" uid="uid://bf83q2xtlv6j6" path="res://scripts/enemy.gd" id="1_7k104"]
+
+[sub_resource type="Curve" id="Curve_7k104"]
+_limits = [0.0, 1.0, 0.0, 3.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7xaro"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k104"]
+albedo_color = Color(0.98828125, 0.86010146, 0.023162842, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7xaro"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7k104"]
+radius = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4gyqm"]
+radius = 3.6998494
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qi2p4"]
+radius = 3.433487
+
+[node name="enemy" type="CharacterBody3D" unique_id=1475309576 groups=["enemy"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_7k104")
+dmg_graph = SubResource("Curve_7k104")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=841380272]
+mesh = SubResource("CapsuleMesh_7xaro")
+surface_material_override/0 = SubResource("StandardMaterial3D_7k104")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=131303523]
+target_desired_distance = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2094897215]
+shape = SubResource("CapsuleShape3D_7xaro")
+
+[node name="stun timer" type="Timer" parent="." unique_id=736887986]
+wait_time = 2.5
+one_shot = true
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1875423095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1959631, 0)
+billboard = 1
+text = "10"
+font_size = 45
+
+[node name="dmg" type="Timer" parent="." unique_id=964046311]
+
+[node name="dmg reset" type="Timer" parent="." unique_id=1195331842]
+wait_time = 1.6999999999999995
+one_shot = true
+
+[node name="hit stun" type="Timer" parent="." unique_id=1144782202]
+wait_time = 0.5
+one_shot = true
+
+[node name="crimson" type="Timer" parent="." unique_id=1361432605]
+wait_time = 60.0
+one_shot = true
+
+[node name="chase" type="Timer" parent="." unique_id=283031206]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1305468057]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=688746906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14992326, 0)
+shape = SubResource("SphereShape3D_7k104")
+
+[node name="knockback group" type="Area3D" parent="." unique_id=1791285717]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="knockback group" unique_id=1866415857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14992326, 0)
+shape = SubResource("SphereShape3D_4gyqm")
+debug_color = Color(0.70196074, 0.44420955, 0, 0.41960785)
+
+[node name="hit group" type="Area3D" parent="." unique_id=1198951479]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hit group" unique_id=1568214278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14992326, 0)
+shape = SubResource("SphereShape3D_qi2p4")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[connection signal="timeout" from="stun timer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="dmg" to="." method="_on_dmg_timeout"]
+[connection signal="timeout" from="dmg reset" to="." method="_on_dmg_reset_timeout"]
+[connection signal="timeout" from="hit stun" to="." method="_on_hit_stun_timeout"]
+[connection signal="timeout" from="crimson" to="." method="_on_crimson_timeout"]
+[connection signal="timeout" from="chase" to="." method="_on_chase_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

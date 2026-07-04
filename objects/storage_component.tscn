@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b2btjhj8vkroq"]
+
+[ext_resource type="Script" uid="uid://ctnruivk1d1r5" path="res://scripts/storage_component.gd" id="1_7fgn4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5oltl"]
+size = Vector3(1, 1.4418945, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5gnm1"]
+
+[node name="storage component" type="StaticBody3D" unique_id=840024799 groups=["storage"]]
+collision_layer = 8
+script = ExtResource("1_7fgn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1281946184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22094727, 0)
+shape = SubResource("BoxShape3D_5oltl")
+debug_color = Color(0.2890625, 1, 0, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=790093262]
+mesh = SubResource("BoxMesh_5gnm1")

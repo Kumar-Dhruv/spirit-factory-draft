@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ce8s32twfxi70"]
+
+[ext_resource type="Script" uid="uid://c7nxsj10djk4g" path="res://resources/itemdata.gd" id="1_k4gu2"]
+
+[resource]
+script = ExtResource("1_k4gu2")
+id = "ammo"
+stackable = true
+stack_limit = 10
+metadata/_custom_type_script = "uid://c7nxsj10djk4g"

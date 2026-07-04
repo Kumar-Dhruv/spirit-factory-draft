@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryData" format=3 uid="uid://dpvsd4hvjb84u"]
+
+[ext_resource type="Script" uid="uid://bsarihex7vbc8" path="res://resources/inventorydata.gd" id="1_oyqhl"]
+[ext_resource type="Script" uid="uid://c7nxsj10djk4g" path="res://resources/itemdata.gd" id="1_t2ec3"]
+[ext_resource type="Resource" uid="uid://biwok00u706e" path="res://resources/items/red spirit dust.tres" id="2_ovu0q"]
+
+[resource]
+script = ExtResource("1_oyqhl")
+placed_items = Array[ExtResource("1_t2ec3")]([ExtResource("2_ovu0q")])
+placed_qty = Array[int]([50])
+size = 2
+metadata/_custom_type_script = "uid://bsarihex7vbc8"

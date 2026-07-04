@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dq8pbs1odpoef"]
+
+[ext_resource type="Script" uid="uid://s8oil8sqf2v8" path="res://scripts/pickup.gd" id="1_l8ypl"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e1ucc"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8ypl"]
+albedo_color = Color(1, 0.8203125, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jfq17"]
+radius = 1.0
+
+[node name="spirit dust" type="Area3D" unique_id=1258700534]
+script = ExtResource("1_l8ypl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=651670655]
+mesh = SubResource("SphereMesh_e1ucc")
+surface_material_override/0 = SubResource("StandardMaterial3D_l8ypl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=789695392]
+shape = SubResource("SphereShape3D_jfq17")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bncxvg7537jny"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eylr0"]
+font_size = 20
+
+[node name="pause" type="CanvasLayer" unique_id=1766701524]
+
+[node name="Label" type="Label" parent="." unique_id=608334220]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_right = 132.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "press esc to exit help menu
+"
+label_settings = SubResource("LabelSettings_eylr0")
+horizontal_alignment = 1

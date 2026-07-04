@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b463s2lbpbo7b"]
+
+[ext_resource type="PackedScene" uid="uid://tw25jrp3oe5v" path="res://objects/pickup.tscn" id="1_4b6da"]
+[ext_resource type="Resource" uid="uid://drm8a5kwby4gm" path="res://resources/items/blue key.tres" id="2_a824s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ks3k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ks3k"]
+albedo_color = Color(0, 0.6015625, 1, 1)
+
+[node name="blue key" type="Node3D" unique_id=337342775]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1085473945]
+mesh = SubResource("BoxMesh_2ks3k")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ks3k")
+
+[node name="pickup" parent="." unique_id=2033932993 instance=ExtResource("1_4b6da")]
+data = ExtResource("2_a824s")
