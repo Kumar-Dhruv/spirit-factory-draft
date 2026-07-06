@@ -1,70 +1,23 @@
 [gd_scene format=3 uid="uid://bwyu456v5pp2t"]
 
-[ext_resource type="Script" uid="uid://dc33ws2yr51k5" path="res://scripts/switch.gd" id="1_it01i"]
+[ext_resource type="Script" uid="uid://c4gpg4odknr1v" path="res://objects/swtich component.gd" id="1_bd5kx"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_kxpdx"]
-size = Vector3(5, 5, 5)
+[sub_resource type="BoxMesh" id="BoxMesh_rbxwc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxpdx"]
-albedo_color = Color(0, 0.765625, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bd5kx"]
+albedo_color = Color(0.1484375, 1, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kxpdx"]
-size = Vector3(7, 0, 7)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h056j"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[sub_resource type="LabelSettings" id="LabelSettings_it01i"]
-font_size = 25
+[node name="switch" type="StaticBody3D" unique_id=1198591082 groups=["switch"]]
+collision_layer = 8
+script = ExtResource("1_bd5kx")
+state = false
 
-[node name="switch" type="Node3D" unique_id=391873119]
-script = ExtResource("1_it01i")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=450999074]
+mesh = SubResource("BoxMesh_rbxwc")
+surface_material_override/0 = SubResource("StandardMaterial3D_bd5kx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1622934840]
-mesh = SubResource("BoxMesh_kxpdx")
-surface_material_override/0 = SubResource("StandardMaterial3D_kxpdx")
-
-[node name="Label3D" type="Label3D" parent="." unique_id=1080865072]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45851, 0)
-billboard = 2
-text = "Switch
-"
-font_size = 262
-
-[node name="t" type="Label3D" parent="." unique_id=1115958379]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2920084, 0)
-billboard = 2
-modulate = Color(1, 0.8671875, 0, 1)
-text = "OFF"
-font_size = 131
-
-[node name="Area3D" type="Area3D" parent="." unique_id=1480415205]
-collision_layer = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1654746594]
-shape = SubResource("BoxShape3D_kxpdx")
-
-[node name="Control" type="Control" parent="." unique_id=362225095]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Control" unique_id=1148190873]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Press E to toggle switch"
-label_settings = SubResource("LabelSettings_it01i")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=295112864]
+shape = SubResource("ConcavePolygonShape3D_h056j")

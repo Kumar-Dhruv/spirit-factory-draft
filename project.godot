@@ -34,6 +34,7 @@ enemy=""
 doors=""
 storage=""
 crafting=""
+switch=""
 
 [input]
 

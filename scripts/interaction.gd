@@ -69,6 +69,9 @@ func check_for_interaction():
 		craft.change_visible(true)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		connect_recipe_signals()
+	
+	elif x.is_in_group("switch"):
+		x.toggle_switch()
 		
 
 

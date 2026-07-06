@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b73ilfvtggq4u"]
 
 [ext_resource type="Script" uid="uid://xsw5duljwiwn" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://dlq555c32qj6g" path="res://gun sample.tscn" id="2_er1rk"]
 [ext_resource type="Texture2D" uid="uid://uloflftdp8ts" path="res://icon.svg" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://c146bx06mb5cd" path="res://scripts/inventory.gd" id="3_1yqc4"]
 [ext_resource type="Script" uid="uid://b1de6w3lgimpd" path="res://scripts/interaction.gd" id="4_esgq3"]
@@ -94,6 +95,9 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72216415, -0.15963086)
 keep_aspect = 0
 current = true
+
+[node name="Props2 (2)" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D" unique_id=452818992 instance=ExtResource("2_er1rk")]
+transform = Transform3D(-0.8956437, 0, -0.2684164, 0, 0.9350001, 0, 0.2684164, 0, -0.8956437, 0.70176136, -0.45013237, -1.9684678)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2004410634]
 shape = SubResource("CapsuleShape3D_sh265")
@@ -422,6 +426,12 @@ layout_mode = 2
 
 [node name="inventory slot4" parent="storage inventory/Inventory/GridContainer" unique_id=1878796182 instance=ExtResource("4_kjkj0")]
 layout_mode = 2
+
+[node name="switch ui" type="Control" parent="." unique_id=1822731232]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="crafting ui" type="Control" parent="." unique_id=1964290962]
 layout_mode = 3
