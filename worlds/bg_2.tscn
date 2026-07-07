@@ -15,6 +15,12 @@ visible = false
 
 [node name="Plane_001" parent="." index="1" unique_id=313076117]
 surface_material_override/0 = SubResource("ORMMaterial3D_dkpt1")
+surface_material_override/1 = SubResource("ORMMaterial3D_dkpt1")
+surface_material_override/2 = SubResource("ORMMaterial3D_dkpt1")
+surface_material_override/3 = SubResource("ORMMaterial3D_dkpt1")
+surface_material_override/4 = SubResource("ORMMaterial3D_dkpt1")
+surface_material_override/5 = SubResource("ORMMaterial3D_dkpt1")
+surface_material_override/6 = SubResource("ORMMaterial3D_dkpt1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=188771577]
 collision_layer = 4
