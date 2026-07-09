@@ -10,17 +10,11 @@ data = PackedVector3Array(46.4214, 0, -51.1229, 46.4214, 4.4428, -42.6527, 46.42
 
 [node name="bg2" unique_id=215587653 instance=ExtResource("1_dkpt1")]
 
-[node name="FinalBaseMesh" parent="." index="0" unique_id=1349995176]
+[node name="FinalBaseMesh" parent="." index="0" unique_id=2146113160]
 visible = false
 
-[node name="Plane_001" parent="." index="1" unique_id=313076117]
+[node name="Plane_001" parent="." index="1" unique_id=17178141]
 surface_material_override/0 = SubResource("ORMMaterial3D_dkpt1")
-surface_material_override/1 = SubResource("ORMMaterial3D_dkpt1")
-surface_material_override/2 = SubResource("ORMMaterial3D_dkpt1")
-surface_material_override/3 = SubResource("ORMMaterial3D_dkpt1")
-surface_material_override/4 = SubResource("ORMMaterial3D_dkpt1")
-surface_material_override/5 = SubResource("ORMMaterial3D_dkpt1")
-surface_material_override/6 = SubResource("ORMMaterial3D_dkpt1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=188771577]
 collision_layer = 4

@@ -15,7 +15,13 @@ func _ready() -> void:
 	storage.change_visible(false)
 	craft.change_visible(false)
 	
-
+func _unhandled_input(event:InputEvent)->void:
+	if event.is_action_pressed("quit"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		interaction_state = !interaction_state
@@ -69,9 +75,6 @@ func check_for_interaction():
 		craft.change_visible(true)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		connect_recipe_signals()
-	
-	elif x.is_in_group("switch"):
-		x.toggle_switch()
 		
 
 

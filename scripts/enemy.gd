@@ -176,7 +176,7 @@ func dmg_player():
 		
 		y = -m * x + c
 	
-	player.hit(abs(y))
+	player.hit(abs(y),global_position)
 	#
 	#
 	#$"dmg reset".stop()

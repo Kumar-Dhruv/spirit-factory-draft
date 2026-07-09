@@ -1,19 +1,35 @@
-extends StaticBody3D
+extends Node3D
 
-@export var door1 : Node3D
-@export var door2 : Node3D
-@export var state = true
+@export var switch_id = "prot"
+
+@export var state = false
+
+var is_player = false
 
 func _ready() -> void:
-	state = !state
-	toggle_switch()
-
-func toggle_switch():
-	state = !state
 	if state:
-		door1.unlocked = true
-		door2.unlocked = false
-		
+		$t.text = "ON"
 	else:
-		door1.unlocked = false
-		door2.unlocked = true
+		$t.text = "OFF"
+		
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interact") and is_player:
+		state = !state
+		if state:
+			$t.text = "ON"
+		else:
+			$t.text = "OFF"
+			
+		loader.switch_toggled.emit(switch_id, state)
+		print("switched")
+	
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	is_player = true
+	$Control.visible = true
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	is_player = false
+	$Control.visible = false

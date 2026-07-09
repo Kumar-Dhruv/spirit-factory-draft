@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://djmtw4wlqt22s"]
+
+[ext_resource type="Texture2D" uid="uid://fk7ldfmj5s18" path="res://orb_particle.png" id="1_vphmg"]
+
+[sub_resource type="Gradient" id="Gradient_fjkwe"]
+offsets = PackedFloat32Array(0, 0.56589144, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ajpa"]
+gradient = SubResource("Gradient_fjkwe")
+
+[sub_resource type="Curve" id="Curve_vy7ay"]
+_limits = [0.0, 25.0, 0.0, 1.0]
+_data = [Vector2(0.26760566, 25), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_twjju"]
+curve = SubResource("Curve_vy7ay")
+
+[sub_resource type="Curve" id="Curve_lt0ou"]
+_limits = [0.0, 0.4, 0.0, 1.0]
+_data = [Vector2(0.0035211295, 0.4), 0.0, 0.0, 0, 0, Vector2(1, 0.4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o3i6y"]
+curve = SubResource("Curve_lt0ou")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0tcwe"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 0.5
+emission_ring_inner_radius = 0.4
+emission_ring_cone_angle = 67.16
+angle_min = -720.0
+angle_max = 720.0
+spread = 126.176
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_curve = SubResource("CurveTexture_o3i6y")
+color_ramp = SubResource("GradientTexture1D_4ajpa")
+emission_curve = SubResource("CurveTexture_twjju")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yidcy"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.3019608, 0.61960787, 1, 1)
+albedo_texture = ExtResource("1_vphmg")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_i4lsq"]
+material = SubResource("StandardMaterial3D_yidcy")
+size = Vector2(0.1, 0.1)
+
+[node name="frq_1_effect" type="Node3D" unique_id=75254917]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1838510422]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+randomness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_0tcwe")
+draw_pass_1 = SubResource("QuadMesh_i4lsq")
