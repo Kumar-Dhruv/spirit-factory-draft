@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1stjohinjpmp"]
 
 [ext_resource type="Script" uid="uid://bf83q2xtlv6j6" path="res://scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://cbqe8v7t2kn5e" path="res://assets/spiritv1.3.png" id="3_8yred"]
 
 [sub_resource type="Curve" id="Curve_7k104"]
 _limits = [0.0, 1.0, 0.0, 3.0]
@@ -23,6 +24,14 @@ radius = 3.6998494
 [sub_resource type="SphereShape3D" id="SphereShape3D_qi2p4"]
 radius = 3.433487
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yred"]
+transparency = 1
+albedo_color = Color(1, 0.92529297, 0.4375, 0.5137255)
+
+[sub_resource type="BoxMesh" id="BoxMesh_34jws"]
+material = SubResource("StandardMaterial3D_8yred")
+size = Vector3(0.03, 0.03, 0.03)
+
 [node name="enemy" type="CharacterBody3D" unique_id=1475309576 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 5
@@ -30,6 +39,7 @@ script = ExtResource("1_7k104")
 dmg_graph = SubResource("Curve_7k104")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=841380272]
+visible = false
 mesh = SubResource("CapsuleMesh_7xaro")
 surface_material_override/0 = SubResource("StandardMaterial3D_7k104")
 
@@ -45,6 +55,7 @@ one_shot = true
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1875423095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1959631, 0)
+visible = false
 billboard = 1
 text = "10"
 font_size = 45
@@ -89,6 +100,36 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14992326, 0)
 shape = SubResource("SphereShape3D_qi2p4")
 debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1209706592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71370894, 0)
+modulate = Color(1, 0.7541504, 0.171875, 1)
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_8yred")
+
+[node name="trail" type="CPUParticles3D" parent="Sprite3D" unique_id=1870875703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14971602, -0.15945971)
+amount = 200
+speed_scale = 0.5
+randomness = 1.0
+mesh = SubResource("BoxMesh_34jws")
+emission_shape = 1
+emission_sphere_radius = 1.2
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+
+[node name="normal" type="CPUParticles3D" parent="Sprite3D" unique_id=1637299432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14971602, 0.013915956)
+amount = 200
+speed_scale = 3.0
+randomness = 1.0
+mesh = SubResource("BoxMesh_34jws")
+emission_shape = 1
+emission_sphere_radius = 2.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
 
 [connection signal="timeout" from="stun timer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="dmg" to="." method="_on_dmg_timeout"]

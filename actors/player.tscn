@@ -1,14 +1,26 @@
 [gd_scene format=3 uid="uid://b73ilfvtggq4u"]
 
 [ext_resource type="Script" uid="uid://xsw5duljwiwn" path="res://scripts/player.gd" id="1_4flbx"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://cg15a5j0sktta" path="res://props/props_2.tscn" id="2_e7yfm"]
+=======
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://uloflftdp8ts" path="res://icon.svg" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cok2wohaiagw5" path="res://objects/gunv2.tscn" id="2_ua707"]
 [ext_resource type="Script" uid="uid://c146bx06mb5cd" path="res://scripts/inventory.gd" id="3_1yqc4"]
+[ext_resource type="Shader" uid="uid://clcfuwtajs4f3" path="res://resources/retro.gdshader" id="3_e7yfm"]
 [ext_resource type="Script" uid="uid://b1de6w3lgimpd" path="res://scripts/interaction.gd" id="4_esgq3"]
 [ext_resource type="PackedScene" uid="uid://l5ryjv63h1ls" path="res://UI/inventory_slot.tscn" id="4_kjkj0"]
 [ext_resource type="Script" uid="uid://btws5tdp2wfig" path="res://scripts/crafting_ui.gd" id="6_tue77"]
 [ext_resource type="PackedScene" uid="uid://c6t3jl7il6bo4" path="res://UI/recipe_slot.tscn" id="7_33vod"]
 [ext_resource type="Script" uid="uid://8wir6tss7dpv" path="res://scripts/weapon_controller.gd" id="8_er1rk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua707"]
+shader = ExtResource("3_e7yfm")
+shader_parameter/pixel_size = 1.0
+shader_parameter/color_depth = 20.0
+shader_parameter/enable_dithering = false
+shader_parameter/dither_intensity = 0.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -69,8 +81,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=585990854]
 
+<<<<<<< Updated upstream
 [node name="gun" parent="CameraController/Camera3D" unique_id=170138946 instance=ExtResource("2_e7yfm")]
 transform = Transform3D(-0.39999998, 1.2714538e-16, 3.4969105e-08, 4.9108753e-09, 0.39603597, 0.056173872, -3.4622566e-08, 0.056173872, -0.39603597, 0, -0.8, -1.8)
+=======
+[node name="SubViewportContainer" type="SubViewportContainer" parent="game window/AspectRatioContainer" unique_id=1457703410]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="game window/AspectRatioContainer/SubViewportContainer" unique_id=1705308426]
+handle_input_locally = false
+size = Vector2i(624, 480)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1629160473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72216415, -0.15963086)
+keep_aspect = 0
+current = true
+
+[node name="Gun" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D" unique_id=158240731 instance=ExtResource("2_ua707")]
+transform = Transform3D(-0.9350001, -7.4516135e-16, 8.1740296e-08, 1.7132885e-08, 0.9142309, 0.19597739, -7.992457e-08, 0.19597743, -0.91423076, 0, -0.768907, -1.968)
+
+[node name="Gun2" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D" unique_id=406617491 instance=ExtResource("2_ua707")]
+transform = Transform3D(-0.89564383, 0, -0.26841643, -0.03281403, 0.9279871, 0.10949285, 0.2664031, 0.11430419, -0.88892585, 0.70176136, -0.54394394, -1.9684678)
+visible = false
+
+[node name="Gun3" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D" unique_id=1290698991 instance=ExtResource("2_ua707")]
+transform = Transform3D(-0.71843076, -5.5879354e-09, -0.21530727, -0.026321415, 0.74437445, 0.08782849, 0.21369231, 0.09168784, -0.7130421, 0.56940496, -0.54394394, -1.9684678)
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D" unique_id=174038872]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="game window/AspectRatioContainer/SubViewportContainer/SubViewport/Camera3D/CanvasLayer" unique_id=1057364359]
+material = SubResource("ShaderMaterial_ua707")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+>>>>>>> Stashed changes
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2004410634]
 shape = SubResource("CapsuleShape3D_sh265")
@@ -79,6 +129,7 @@ shape = SubResource("CapsuleShape3D_sh265")
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="Control" type="Control" parent="." unique_id=949337571]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

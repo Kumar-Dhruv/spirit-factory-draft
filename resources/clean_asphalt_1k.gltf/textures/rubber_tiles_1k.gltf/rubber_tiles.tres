@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://osjgka6f2uvr"]
+
+[ext_resource type="Texture2D" uid="uid://ynclgimo8k7" path="res://resources/clean_asphalt_1k.gltf/textures/rubber_tiles_1k.gltf/textures/rubber_tiles_diff_1k.jpg" id="1_d05v6"]
+[ext_resource type="Texture2D" uid="uid://d18u5fhowcyiq" path="res://resources/clean_asphalt_1k.gltf/textures/rubber_tiles_1k.gltf/textures/rubber_tiles_arm_1k.jpg" id="2_fyeey"]
+[ext_resource type="Texture2D" uid="uid://c5rr2nigncah4" path="res://resources/clean_asphalt_1k.gltf/textures/rubber_tiles_1k.gltf/textures/rubber_tiles_nor_gl_1k.jpg" id="3_1ioq6"]
+
+[resource]
+resource_name = "rubber_tiles"
+cull_mode = 2
+albedo_color = Color(0.5390625, 0.5390625, 0.5390625, 1)
+albedo_texture = ExtResource("1_d05v6")
+metallic_texture = ExtResource("2_fyeey")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_fyeey")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_1ioq6")
+uv1_scale = Vector3(0.405, 0.405, 0.405)
+uv1_triplanar = true

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cok2wohaiagw5"]
+
+[ext_resource type="PackedScene" uid="uid://carvctew26ov2" path="res://assets/Gun.glb" id="1_f2v8a"]
+
+[node name="Gun" unique_id=158240731 instance=ExtResource("1_f2v8a")]
+
+[node name="Cube_042" parent="." index="0" unique_id=1595026964]
+transform = Transform3D(0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0)

@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dwpu7lddrd1cj"]
+
+[ext_resource type="Texture2D" uid="uid://h23hc7elfsvo" path="res://resources/clean_asphalt_1k.gltf/textures/clean_asphalt_diff_1k.jpg" id="1_tp5nc"]
+[ext_resource type="Texture2D" uid="uid://rcj05ly5mryy" path="res://resources/clean_asphalt_1k.gltf/textures/clean_asphalt_arm_1k.jpg" id="2_e58hx"]
+[ext_resource type="Texture2D" uid="uid://dtd4w1hbhpxoy" path="res://resources/clean_asphalt_1k.gltf/textures/clean_asphalt_nor_gl_1k.jpg" id="3_vkja6"]
+
+[resource]
+resource_name = "clean_asphalt"
+cull_mode = 2
+albedo_texture = ExtResource("1_tp5nc")
+metallic_texture = ExtResource("2_e58hx")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_e58hx")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_vkja6")
+uv1_scale = Vector3(0.085, 0.085, 0.085)
+uv1_offset = Vector3(0.185, 0, 0)
+uv1_triplanar = true
